@@ -1,0 +1,50 @@
+@model IEnumerable<FirstDotNetWebApp.Models.LeaveTypeVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="display-5 my-4">Leave Types</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultDays)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultDays)
+            </td>
+            <td class="d-flex justify-content-end">
+                <a class="btn btn-success mx-2" asp-action="Details" asp-route-id="@item.Id"><span class="material-symbols-outlined">
+                    visibility
+                </span></a>
+                <a class="btn btn-secondary mx-2" asp-action="Edit" asp-route-id="@item.Id"><span class="material-symbols-outlined">
+                    edit
+                </span></a>
+                <a class="btn btn-danger mx-2" asp-action="Delete" asp-route-id="@item.Id"><span class="material-symbols-outlined">
+                    delete
+                </span></a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="my-3 d-flex justify-content-start">
+    <a class="btn btn-primary" asp-action="Create">Add New <span class="material-symbols-outlined align-middle">
+library_add
+</span></a>
+</div>
